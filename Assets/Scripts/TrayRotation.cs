@@ -1,36 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TrayRotation : MonoBehaviour {
-
-    public GameObject bodyGameObject;
-    public GameObject positionOfTray;
-    public GameObject tray;
+public class TrayRotation : MonoBehaviour 
+{
     public Transform bodyTransform;
     public float rotatePrecent;
+	public float torqueForceFixSpeed;
 
     // Use this for initialization
-    void Start () {
-        bodyGameObject = GameObject.FindGameObjectWithTag("Body");
-        tray = GameObject.FindGameObjectWithTag("Tray");
-        positionOfTray = GameObject.FindGameObjectWithTag("TrayPos");
+    void Start () 
+	{
+		
     }
-	
-	// Update is called once per frame
-	void Update () {
-        float bodyRotation = bodyTransform.eulerAngles.z;
-        if (bodyRotation > 180)
+
+	void FixedUpdate () // FixedUpdate is used for physics update
+	{
+        float bodyRotation = bodyTransform.eulerAngles.z;	// angle in degrees
+		float trayRotation = transform.eulerAngles.z;		// angle of tray in degrees
+		float appliedTorForce, desiredAngle;
+
+		if (bodyRotation > 180)	// left side body angle modification (e.g. turns 350 into -10)
         {
-            bodyRotation = -(360 - bodyRotation);
-            //Debug.Log(bodyRotation);
+            bodyRotation = bodyRotation - 360;
         }
-        else
-        {
-            bodyRotation = bodyRotation;
-            //Debug.Log(bodyRotation);
-        }
-        transform.eulerAngles = new Vector3 (0, 0, bodyRotation * rotatePrecent);
-        //if(tray.transform.rotation > 90)
-        tray.transform.position = positionOfTray.transform.position;
+
+		if (trayRotation > 180)	// left side tray angle modification (e.g. turns 350 into -10)
+		{
+			trayRotation = trayRotation - 360;
+		}
+
+		desiredAngle = bodyRotation * rotatePrecent;	// angle which we want to position the tray in
+
+		appliedTorForce = desiredAngle - trayRotation;	// torque force that will be applied onto the tray
+
+		GetComponent<Rigidbody2D>().AddTorque(appliedTorForce * torqueForceFixSpeed * Time.deltaTime, ForceMode2D.Force);	// applies the rotational force
     }
 }

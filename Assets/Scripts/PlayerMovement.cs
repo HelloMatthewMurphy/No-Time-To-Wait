@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         float bodyRotation = bodyTransform.eulerAngles.z;
-        Debug.Log(bodyRotation);
+        //Debug.Log(bodyRotation);
         if (bodyRotation > 180)
         {
             bodyRotation = 360 - bodyRotation;

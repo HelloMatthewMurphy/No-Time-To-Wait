@@ -231,6 +231,8 @@
      <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\MouseBalance.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\TrayPositionRigidbodyScript.cs" />
+     <Compile Include="Assets\Scripts\TrayPositionScript.cs" />
      <Compile Include="Assets\Scripts\TrayRotation.cs" />
      <None Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\JSON\readme.txt" />
      <None Include="Assets\FungusExamples\FungusLua\Localization\stringtable.txt" />
