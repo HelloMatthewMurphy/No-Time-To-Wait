@@ -10,36 +10,35 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     public float maxSpeed = 3f;
     public float moveSpeed;
+    public bool standing;
+
+    private float maxBodyAngle;
 
     // Use this for initialization
     void Start () {
+        standing = true;
         rb = GetComponent<Rigidbody2D>();
+        maxBodyAngle = Mathf.Abs(bodyGameObject.GetComponent<HingeJoint2D>().limits.max);  // gets the positive angle at which the body falls over
 	}
     
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         float bodyRotation = bodyTransform.eulerAngles.z;
-        //Debug.Log(bodyRotation);
-        if (bodyRotation > 180)
+        if (bodyRotation > 180) // right side
         {
             bodyRotation = 360 - bodyRotation;
         }
-        else
+        else    // left side
         {
             bodyRotation = -(bodyRotation);
         }
-        rb.AddForce(new Vector2(bodyRotation/82 * tiltSpeed, 0f));
 
-        /*
-        if (Input.GetAxis("HorizontalP") < 0f) 			// facing left
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (Input.GetAxis("HorizontalP") > 0f)	// facing right
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }*/
+        //Debug.Log(bodyRotation);
+        standing = Mathf.Abs(bodyRotation) >= maxBodyAngle;
+        Debug.Log(standing);
+
+        rb.AddForce(new Vector2(bodyRotation/82 * tiltSpeed, 0f));
 
         Vector3 easeVelocity = rb.velocity;
         easeVelocity.y = rb.velocity.y;
