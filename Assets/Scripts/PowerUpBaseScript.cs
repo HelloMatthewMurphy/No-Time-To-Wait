@@ -34,7 +34,8 @@ public class PowerUpBaseScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Body" || collision.gameObject.tag == "Legs")   // if the player touches the power up
+        if ((collision.gameObject.tag == "Body" || collision.gameObject.tag == "Legs") 
+            && collision.gameObject.GetComponent<PlayerMovement>().standing)   // if the player touches the power up and is standing
         {
             Destroy(gameObject);    // destroys the game object, making it disappear
         }

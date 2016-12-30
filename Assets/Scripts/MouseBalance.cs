@@ -11,42 +11,37 @@ public class MouseBalance : MonoBehaviour
     private float rotationAcceleration;     // How much torque it's applying
     private float accelerationLimit;        // Max torque acceleration
     private float rotationDecceleration;
+    private bool enableRotation;            // if false, horizontal axis movement won't apply rotational force
 
     // Use this for initialization
     void Start()
     {
+        enableRotation = true;
         rotationAcceleration = 0;
         accelerationLimit = 10;
         rotationDecceleration = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Called every single physics update cycle
     public void FixedUpdate()
     {
-        applyRotation();
+        if (enableRotation)
+        {
+            applyRotation();
+        }
     }
 
     private void applyRotation()
     {
         rotationAcceleration += Input.GetAxis("Horizontal");
-        //rotationAcceleration += Input.GetAxis("Horizontal");
+        
         rotationAcceleration = Mathf.Clamp(rotationAcceleration, -accelerationLimit, accelerationLimit);
 
         GetComponent<Rigidbody2D>().AddTorque(rotationAcceleration * rotationSpeed * Time.deltaTime);
         GetComponent<Rigidbody2D>().angularVelocity = Mathf.Clamp(GetComponent<Rigidbody2D>().angularVelocity, -rotationSpeedLimit, rotationSpeedLimit);
 
         if (Input.GetAxis("Horizontal") == 0) // if mouse is not moved, deccelerate it
-        //if (Input.GetAxis("Horizontal") == 0) // if mouse is not moved, deccelerate it
         {
-            /*
-            rotationAcceleration = Mathf.Lerp(rotationAcceleration, 0, 0.05f);
-            Debug.Log(rotationAcceleration);
-            //*/
             if (rotationAcceleration < -accelerationLimit * 0.1)    // if the acceleration is higher than 10% of the limit
             {
                 rotationAcceleration += rotationDecceleration;
@@ -61,5 +56,10 @@ public class MouseBalance : MonoBehaviour
         {
             rotationDecceleration = 0;
         }
+    }
+
+    public void setEnableRotation(bool enableRotation)
+    {
+        this.enableRotation = enableRotation;
     }
 }
