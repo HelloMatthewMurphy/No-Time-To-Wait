@@ -283,6 +283,7 @@
     <Compile Include="Assets\FungusExamples\FungusLua\Bindings\CustomScript.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\ItemScript.cs" />
+    <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\MouseBalance.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PowerUpBaseScript.cs" />
