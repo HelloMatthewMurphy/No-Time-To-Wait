@@ -7,6 +7,7 @@ public class PowerUpBaseScript : MonoBehaviour
 
     public float floatMovementHeight;   // max distance a power up can move in a single frame
     public int floatCycles;             // higher number = slower floating
+    public PlayerMovement movementScript;
 
     private int currentCycle;
 
@@ -35,7 +36,7 @@ public class PowerUpBaseScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.gameObject.tag == "Body" || collision.gameObject.tag == "Legs") 
-            && collision.gameObject.GetComponent<PlayerMovement>().standing)   // if the player touches the power up and is standing
+            && movementScript.getStanding())   // if the player touches the power up and is standing
         {
             Destroy(gameObject);    // destroys the game object, making it disappear
         }
