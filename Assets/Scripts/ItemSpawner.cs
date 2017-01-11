@@ -11,6 +11,7 @@ public class ItemSpawner : MonoBehaviour {
     public int maxAmount;
     private int currentAmount;
     private float i = 0;
+    private float time = 0.2f;
 
     // Use this for initialization
     void Start () {
@@ -38,10 +39,10 @@ public class ItemSpawner : MonoBehaviour {
                 GameObject temp = (GameObject)subListObject;
                 if (temp.transform.tag == "FoodItem")
                 {
-                    itemsOnTray.Add(temp);
+                    itemsOnTray.Add(Instantiate(item, trayPos.transform.position + new Vector3(0, 0 + i, 0), Quaternion.identity));
                     Debug.Log("GOT FOOD BOI!!!");
 
-                    Instantiate(item, trayPos.transform.position + new Vector3(0, 0 + i, 0), Quaternion.identity);
+                    //Instantiate(item, trayPos.transform.position + new Vector3(0, 0 + i, 0), Quaternion.identity);
                     i += 0.1f;
                     currentAmount++;
                 }
@@ -51,10 +52,15 @@ public class ItemSpawner : MonoBehaviour {
         //When hit table remove food
         if (col.gameObject.tag == "Table" && currentAmount > 0)
         {
-            Debug.Log("Collision");
+            Debug.Log("Remove IT BOIIIIII");
             //Object[] subListObjects = Resources.LoadAll("Items", typeof(GameObject));
             //Debug.Log(subListObjects[0].name);
-            
+            Destroy(itemsOnTray[itemsOnTray.Count - 1], time);
+            //itemsOnTray[itemsOnTray.Count - 1].SetActive(false);
+            itemsOnTray.Remove(itemsOnTray[itemsOnTray.Count - 1]);
+            //DestroyImmediate(itemsOnTray[itemsOnTray.Count - 1], true);
+            currentAmount--;
+
         }
     }
 }

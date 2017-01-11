@@ -13,6 +13,6 @@ public class TrayPositionScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position = trayPosition.position;
-        transform.rotation = trayPosition.rotation;
+        //transform.rotation = trayPosition.rotation;
     }
 }
