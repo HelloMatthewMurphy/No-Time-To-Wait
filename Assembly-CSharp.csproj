@@ -234,6 +234,7 @@
      <Compile Include="Assets\Scripts\MouseBalance.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUpBaseScript.cs" />
+     <Compile Include="Assets\Scripts\ScoreForPlayer.cs" />
      <Compile Include="Assets\Scripts\TrayPositionRigidbodyScript.cs" />
      <Compile Include="Assets\Scripts\TrayPositionScript.cs" />
      <Compile Include="Assets\Scripts\TrayRotation.cs" />

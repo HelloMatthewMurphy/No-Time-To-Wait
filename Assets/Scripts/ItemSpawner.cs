@@ -7,6 +7,7 @@ public class ItemSpawner : MonoBehaviour {
     public List<GameObject> itemsOnTray = new List<GameObject>();
     public GameObject item; //Item that will be on tray
     public GameObject trayPos;
+    public ScoreForPlayer parent; //Used to change score in parent
     //public GameObject tray;
     public int maxAmount;
     private int currentAmount;
@@ -53,14 +54,10 @@ public class ItemSpawner : MonoBehaviour {
         if (col.gameObject.tag == "Table" && currentAmount > 0)
         {
             Debug.Log("Remove IT BOIIIIII");
-            //Object[] subListObjects = Resources.LoadAll("Items", typeof(GameObject));
-            //Debug.Log(subListObjects[0].name);
             Destroy(itemsOnTray[itemsOnTray.Count - 1], time);
-            //itemsOnTray[itemsOnTray.Count - 1].SetActive(false);
             itemsOnTray.Remove(itemsOnTray[itemsOnTray.Count - 1]);
-            //DestroyImmediate(itemsOnTray[itemsOnTray.Count - 1], true);
             currentAmount--;
-
+            parent.score++;
         }
     }
 }
