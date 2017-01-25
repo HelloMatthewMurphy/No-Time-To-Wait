@@ -10,8 +10,10 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     public float maxSpeed = 3f;
     public float moveSpeed;
+    public float jumpPower;
     public bool standing;
     public bool enableFalling;
+    public bool grounded;
 
     private float maxBodyAngle;
     private MouseBalance mouseBalanceScript;
@@ -49,7 +51,12 @@ public class PlayerMovement : MonoBehaviour {
 
         if (standing)
         {
-            applyMovement(bodyRotation);
+            applyMovement(bodyRotation);    // Move the character
+
+            if (Input.GetButtonDown("Jump") && grounded)
+            {
+                rb.AddForce(Vector2.up * jumpPower);
+            }
 
             fallingExecuted = false;
         }
