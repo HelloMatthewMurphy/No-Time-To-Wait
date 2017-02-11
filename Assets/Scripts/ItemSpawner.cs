@@ -8,10 +8,11 @@ public class ItemSpawner : MonoBehaviour {
     public GameObject item; //Item that will be on tray
     public GameObject trayPos;
     public ScoreForPlayer parent; //Used to change score in parent
-    //public GameObject tray;
     public int maxAmount;
+    public float foodDist;
+
+    private float totalFoodDist = 0;
     private int currentAmount;
-    private float i = 0;
     private float time = 0.2f;
 
     // Use this for initialization
@@ -25,7 +26,7 @@ public class ItemSpawner : MonoBehaviour {
         
 	}
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         //When hit kitchen take food
         if (col.gameObject.tag == "Kitchen" && currentAmount < maxAmount)
@@ -40,11 +41,11 @@ public class ItemSpawner : MonoBehaviour {
                 GameObject temp = (GameObject)subListObject;
                 if (temp.transform.tag == "FoodItem")
                 {
-                    itemsOnTray.Add(Instantiate(item, trayPos.transform.position + new Vector3(0, 0 + i, 0), Quaternion.identity));
+                    itemsOnTray.Add(Instantiate(item, transform.position + (transform.up * totalFoodDist), Quaternion.identity));
                     //Debug.Log("GOT FOOD BOI!!!");
 
                     //Instantiate(item, trayPos.transform.position + new Vector3(0, 0 + i, 0), Quaternion.identity);
-                    i += 0.1f;
+                    totalFoodDist += foodDist;
                     currentAmount++;
                 }
             }
@@ -58,6 +59,7 @@ public class ItemSpawner : MonoBehaviour {
             itemsOnTray.Remove(itemsOnTray[itemsOnTray.Count - 1]);
             currentAmount--;
             parent.score++;
+            totalFoodDist -= foodDist;
         }
     }
 }
