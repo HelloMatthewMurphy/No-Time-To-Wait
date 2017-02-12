@@ -9,10 +9,9 @@ public class ItemSpawner : MonoBehaviour {
     public GameObject trayPos;
     public ScoreForPlayer parent; //Used to change score in parent
     public int maxAmount;
-    public float foodDist;
+    public float foodDist;  // Distance between food pieces (from the center of 1 food unit to the center of the next food unit)
+    public int currentAmount;
 
-    private float totalFoodDist = 0;
-    private int currentAmount;
     private float time = 0.2f;
 
     // Use this for initialization
@@ -41,11 +40,7 @@ public class ItemSpawner : MonoBehaviour {
                 GameObject temp = (GameObject)subListObject;
                 if (temp.transform.tag == "FoodItem")
                 {
-                    itemsOnTray.Add(Instantiate(item, transform.position + (transform.up * totalFoodDist), Quaternion.identity));
-                    //Debug.Log("GOT FOOD BOI!!!");
-
-                    //Instantiate(item, trayPos.transform.position + new Vector3(0, 0 + i, 0), Quaternion.identity);
-                    totalFoodDist += foodDist;
+                    itemsOnTray.Add(Instantiate(item, transform.position + (transform.up * foodDist * (itemsOnTray.Count + 1)), Quaternion.identity));   // spawn food unit on the tray with appropriate foodDist
                     currentAmount++;
                 }
             }
@@ -54,12 +49,10 @@ public class ItemSpawner : MonoBehaviour {
         //When hit table remove food
         if (col.gameObject.tag == "Table" && currentAmount > 0)
         {
-            //Debug.Log("Remove IT BOIIIIII");
             Destroy(itemsOnTray[itemsOnTray.Count - 1], time);
             itemsOnTray.Remove(itemsOnTray[itemsOnTray.Count - 1]);
             currentAmount--;
             parent.score++;
-            totalFoodDist -= foodDist;
         }
     }
 }

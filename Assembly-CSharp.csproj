@@ -232,7 +232,7 @@
      <Compile Include="Assets\Scripts\GroundCheck.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\ItemSpawner.cs" />
-     <Compile Include="Assets\Scripts\ItemSway.cs" />
+     <Compile Include="Assets\Scripts\ItemSwaying.cs" />
      <Compile Include="Assets\Scripts\MouseBalance.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUpBaseScript.cs" />
