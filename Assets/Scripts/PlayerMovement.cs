@@ -140,4 +140,27 @@ public class PlayerMovement : MonoBehaviour {
     {
         return standing;
     }
+    public void setSpeed(float max, float tilt)
+    {
+        maxSpeed = maxSpeed * max;
+        tiltSpeed = tiltSpeed * tilt;
+        Invoke("halfSpeed", 2);
+    }
+    private void halfSpeed()
+    {
+        maxSpeed = maxSpeed / 3;
+        tiltSpeed = tiltSpeed / 3;
+    }
+    public void setAngle()
+    {
+        float bodyRotation = bodyTransform.eulerAngles.z;   // Record the rotation of the body
+        if (bodyRotation > 180) // Right side tilting of the body
+        {
+            bodyTransform.rotation = Quaternion.Euler(0, 0, 270);
+        }
+        else                    // Left side tilting of the body
+        {
+            bodyTransform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+    }
 }

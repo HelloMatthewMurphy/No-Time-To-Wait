@@ -228,6 +228,8 @@
      <Compile Include="Assets\Fungus\iTween\Scripts\Commands\StopTweens.cs" />
      <Compile Include="Assets\Fungus\iTween\Scripts\Commands\iTweenCommand.cs" />
      <Compile Include="Assets\FungusExamples\FungusLua\Bindings\CustomScript.cs" />
+     <Compile Include="Assets\Scripts\BananaPowerUp.cs" />
+     <Compile Include="Assets\Scripts\BananaThrow.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\GroundCheck.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
@@ -237,6 +239,8 @@
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUpBaseScript.cs" />
      <Compile Include="Assets\Scripts\ScoreForPlayer.cs" />
+     <Compile Include="Assets\Scripts\SlipBanana.cs" />
+     <Compile Include="Assets\Scripts\SpeedPowerUp.cs" />
      <Compile Include="Assets\Scripts\TrayPositionRigidbodyScript.cs" />
      <Compile Include="Assets\Scripts\TrayPositionScript.cs" />
      <Compile Include="Assets\Scripts\TrayRotation.cs" />
