@@ -44,15 +44,21 @@ public class ItemSpawner : MonoBehaviour {
                     currentAmount++;
                 }
             }
+            col.gameObject.GetComponent<KitchenSpawn>().foodReady = false;
         }
 
         //When hit table remove food
-        if (col.gameObject.tag == "Table" && currentAmount > 0)
+        if (col.gameObject.tag == "Table" && currentAmount >= col.gameObject.GetComponent<TableActive>().numberAtTable && col.gameObject.GetComponent<TableActive>().peopleAtTable)
         {
-            Destroy(itemsOnTray[itemsOnTray.Count - 1], time);
-            itemsOnTray.Remove(itemsOnTray[itemsOnTray.Count - 1]);
-            currentAmount--;
-            parent.score++;
+            
+            for (int i = col.gameObject.GetComponent<TableActive>().numberAtTable; i > 0; i--)
+            {
+                Destroy(itemsOnTray[itemsOnTray.Count - 1], time);
+                itemsOnTray.Remove(itemsOnTray[itemsOnTray.Count - 1]);
+                currentAmount--;
+            }
+            parent.score += col.gameObject.GetComponent<TableActive>().numberAtTable;
+            col.gameObject.GetComponent<TableActive>().peopleAtTable = false;
         }
     }
 }

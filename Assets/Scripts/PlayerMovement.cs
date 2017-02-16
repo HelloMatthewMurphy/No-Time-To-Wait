@@ -21,8 +21,11 @@ public class PlayerMovement : MonoBehaviour {
     private bool fallingExecuted;
     private Vector2 initBodyPosTrans;       // How much you need to add to leg position, to arrive at the initial body position
 
+    private SpriteRenderer mySpriteRenderer; 
+
     // Use this for initialization
     void Start () {
+        mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         standing = true;
         rb = GetComponent<Rigidbody2D>();
         maxBodyAngle = Mathf.Abs(bodyGameObject.GetComponent<HingeJoint2D>().limits.max);   // gets the positive angle at which the body falls over
@@ -38,10 +41,12 @@ public class PlayerMovement : MonoBehaviour {
         if (bodyRotation > 180) // Right side tilting of the body
         {
             bodyRotation = 360 - bodyRotation;
+            mySpriteRenderer.flipX = true;
         }
         else                    // Left side tilting of the body
         {
             bodyRotation = -(bodyRotation);
+            mySpriteRenderer.flipX = false;
         }
 
         if (standing && enableFalling)
