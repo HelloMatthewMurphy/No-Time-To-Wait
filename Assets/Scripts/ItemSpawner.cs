@@ -8,6 +8,7 @@ public class ItemSpawner : MonoBehaviour {
     public GameObject item; //Item that will be on tray
     public GameObject trayPos;
     public ScoreForPlayer parent; //Used to change score in parent
+   // public PowerUpSpawner powerSpawnerScript;
     public int maxAmount;
     public float foodDist;  // Distance between food pieces (from the center of 1 food unit to the center of the next food unit)
     public int currentAmount;
@@ -16,8 +17,7 @@ public class ItemSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        trayPos = GameObject.FindGameObjectWithTag("TrayPos");
-        //tray = GameObject.FindGameObjectWithTag("Tray");
+        
     }
 	
 	// Update is called once per frame
@@ -41,10 +41,13 @@ public class ItemSpawner : MonoBehaviour {
                 if (temp.transform.tag == "FoodItem")
                 {
                     itemsOnTray.Add(Instantiate(item, transform.position + (transform.up * foodDist * (itemsOnTray.Count + 1)), Quaternion.identity));   // spawn food unit on the tray with appropriate foodDist
+                    Transform itemStack = transform.Find("ItemStack");  // finds the transform of ItemStack of the appropriate player
+                    itemsOnTray[itemsOnTray.Count - 1].GetComponent<ItemScript>().setTrayAsParent(itemStack);    // Set the tray (of the appropriate player) as the parent of the item
                     currentAmount++;
                 }
             }
             col.gameObject.GetComponent<KitchenSpawn>().foodReady = false;
+           // powerSpawnerScript.SpawnPowerUp();
         }
 
         //When hit table remove food

@@ -25,7 +25,7 @@ public class KitchenSpawn : MonoBehaviour {
             }
         }
         else
-            kitchenSpawnTime = 5.0f;
+            kitchenSpawnTime = 0.1f;
         gameObject.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().text = kitchenSpawnTime.ToString("F1");
         (gameObject.GetComponent(typeof(Collider2D)) as Collider2D).enabled = foodReady;
 	}

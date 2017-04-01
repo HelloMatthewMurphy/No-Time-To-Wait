@@ -37,10 +37,11 @@ public class SpeedPowerUp: MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.gameObject.tag == "Body" || collision.gameObject.tag == "Legs") 
-            && movementScript.getStanding())   // if the player touches the power up and is standing
+            && collision.gameObject.GetComponent<PlayerMovement>().getStanding())   // if the player touches the power up and is standing
         {
-            movementScript.setSpeed(3, 3);
-            Destroy(gameObject);    // destroys the game object, making it disappear
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<PlayerMovement>().setSpeed(3, 3);
+               // destroys the game object, making it disappear
             //Invoke(movementScript.setSpeed(1 / 3, 1 / 3), 5);
         }
     }

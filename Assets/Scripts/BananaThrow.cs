@@ -10,6 +10,8 @@ public class BananaThrow : MonoBehaviour
     //public PlayerMovement movementScript;
     public GameObject bannana;
     public GameObject body;
+    public string throwInput = "Throw_P1";
+
     private int currentCycle;
 
     // Use this for initialization
@@ -21,26 +23,18 @@ public class BananaThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 updatedPos = transform.position;    // gets the current position of the power up
-        updatedPos.y = updatedPos.y + (floatMovementHeight * Mathf.Cos(Mathf.PI * 2.0f * (1.0f * currentCycle / floatCycles))); // adds or takes away a small amount of distance. This gives an illusion of it floating up and down. Sin function makes the movement smooth
-
-        transform.position = updatedPos;            // changes the position of the power up to this newly calculated position
-
-        currentCycle++;
-
-        if (currentCycle == floatCycles)            // resets the cycle once it reaches the max cycle (floatCycles)
-        {
-            currentCycle = 0;
-        }
+        
     }
 
     void FixedUpdate()
     {
-        if (Input.GetButtonDown("Throw"))
+        if (Input.GetButtonDown(throwInput))
         {
-            body = GameObject.FindGameObjectWithTag("Body");
-            //bannana.transform.parent = body.transform;
-            Instantiate(bannana, body.transform,false);
+            GameObject bananaInstance = Instantiate(bannana, body.transform ,false);
+            bananaInstance.AddComponent<Rigidbody2D>();
+            bananaInstance.GetComponent<Rigidbody2D>().AddForce(new Vector2(500f, 200f));
+            bananaInstance.transform.SetParent(null);
+
             Destroy(gameObject);
         }
     }

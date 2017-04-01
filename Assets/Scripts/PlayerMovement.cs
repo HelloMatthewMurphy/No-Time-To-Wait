@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool standing;
     public bool enableFalling;
     public bool grounded;
+    public string jumpInput = "Jump_P1";
 
     private float maxBodyAngle;
     private MouseBalance mouseBalanceScript;
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             applyMovement(bodyRotation);    // Move the character
 
-            if (Input.GetButtonDown("Jump") && grounded)
+            if (Input.GetButtonDown(jumpInput) && grounded)
             {
                 rb.AddForce(Vector2.up * jumpPower);
             }
@@ -122,12 +123,7 @@ public class PlayerMovement : MonoBehaviour {
         easeVelocity.z = 0.0f;
         easeVelocity.x *= 0.75f;
 
-        float h = Input.GetAxis("HorizontalP");
-
         rb.velocity = easeVelocity;
-
-        // moves player
-        rb.AddForce((Vector2.right * moveSpeed) * h);
 
         // Limit speed
         if (rb.velocity.x > maxSpeed)

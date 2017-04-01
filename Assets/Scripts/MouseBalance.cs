@@ -7,6 +7,7 @@ public class MouseBalance : MonoBehaviour
     public float rotationSpeed;             // How sensitive the torque is applied
     public float rotationSpeedLimit;        // Fastest speed the body can rotate at
     public float rotationDeccelerationRate; // If no input is given, how fast players balancing input looses speed
+    public string movementInput = "Horizontal_P1";
 
     private float rotationAcceleration;     // How much torque it's applying
     private float accelerationLimit;        // Max torque acceleration
@@ -33,14 +34,14 @@ public class MouseBalance : MonoBehaviour
 
     private void applyRotation()
     {
-        rotationAcceleration += Input.GetAxis("Horizontal");
+        rotationAcceleration += Input.GetAxis(movementInput);
         
         rotationAcceleration = Mathf.Clamp(rotationAcceleration, -accelerationLimit, accelerationLimit);
 
         GetComponent<Rigidbody2D>().AddTorque(rotationAcceleration * rotationSpeed * Time.deltaTime);
         GetComponent<Rigidbody2D>().angularVelocity = Mathf.Clamp(GetComponent<Rigidbody2D>().angularVelocity, -rotationSpeedLimit, rotationSpeedLimit);
 
-        if (Input.GetAxis("Horizontal") == 0) // if mouse is not moved, deccelerate it
+        if (Input.GetAxis(movementInput) == 0) // if mouse is not moved, deccelerate it
         {
             if (rotationAcceleration < -accelerationLimit * 0.1)    // if the acceleration is higher than 10% of the limit
             {

@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BananaPowerUp : MonoBehaviour
+public class SuperGlue : MonoBehaviour
 {
 
     public float floatMovementHeight;   // max distance a power up can move in a single frame
     public int floatCycles;             // higher number = slower floating
     public PlayerMovement movementScript;
-    public GameObject ban;
-   public GameObject body;
+    public ItemSwaying swayScript;
     private int currentCycle;
 
 	// Use this for initialization
@@ -40,15 +38,9 @@ public class BananaPowerUp : MonoBehaviour
         if ((collision.gameObject.tag == "Body" || collision.gameObject.tag == "Legs") 
             && collision.gameObject.GetComponent<PlayerMovement>().getStanding())   // if the player touches the power up and is standing
         {
-
-            Destroy(gameObject);    // destroys the game object, making it disappear
-
-            GameObject pickedUpBanana = Instantiate(ban, collision.gameObject.GetComponent<ReferenceScript>().body.transform, false);
-            pickedUpBanana.GetComponent<BananaThrow>().body = collision.gameObject;
-
-           
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<ReferenceScript>().swayScript.glueActivate();
+            // destroys the game object, making it disappear
         }
     }
-
- 
 }

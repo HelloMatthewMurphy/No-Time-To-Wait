@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,6 +69,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -281,15 +287,22 @@
     <Compile Include="Assets\Fungus\iTween\Scripts\Commands\StopTweens.cs" />
     <Compile Include="Assets\Fungus\iTween\Scripts\Commands\iTweenCommand.cs" />
     <Compile Include="Assets\FungusExamples\FungusLua\Bindings\CustomScript.cs" />
+    <Compile Include="Assets\Scripts\BananaPowerUp.cs" />
+    <Compile Include="Assets\Scripts\BananaThrow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\GroundCheck.cs" />
     <Compile Include="Assets\Scripts\ItemScript.cs" />
     <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\ItemSwaying.cs" />
+    <Compile Include="Assets\Scripts\KitchenSpawn.cs" />
     <Compile Include="Assets\Scripts\MouseBalance.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PowerUpBaseScript.cs" />
     <Compile Include="Assets\Scripts\ScoreForPlayer.cs" />
+    <Compile Include="Assets\Scripts\SlipBanana.cs" />
+    <Compile Include="Assets\Scripts\SpeedPowerUp.cs" />
+    <Compile Include="Assets\Scripts\SuperGlue.cs" />
+    <Compile Include="Assets\Scripts\TableActive.cs" />
     <Compile Include="Assets\Scripts\TrayPositionRigidbodyScript.cs" />
     <Compile Include="Assets\Scripts\TrayPositionScript.cs" />
     <Compile Include="Assets\Scripts\TrayRotation.cs" />

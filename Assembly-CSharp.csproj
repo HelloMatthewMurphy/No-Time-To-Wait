@@ -239,9 +239,12 @@
      <Compile Include="Assets\Scripts\MouseBalance.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUpBaseScript.cs" />
+     <Compile Include="Assets\Scripts\PowerUpSpawner.cs" />
+     <Compile Include="Assets\Scripts\ReferenceScript.cs" />
      <Compile Include="Assets\Scripts\ScoreForPlayer.cs" />
      <Compile Include="Assets\Scripts\SlipBanana.cs" />
      <Compile Include="Assets\Scripts\SpeedPowerUp.cs" />
+     <Compile Include="Assets\Scripts\SuperGlue.cs" />
      <Compile Include="Assets\Scripts\TableActive.cs" />
      <Compile Include="Assets\Scripts\TrayPositionRigidbodyScript.cs" />
      <Compile Include="Assets\Scripts\TrayPositionScript.cs" />
@@ -272,6 +275,9 @@
      <None Include="Assets\Fungus\Thirdparty\FungusLua\Resources\Lua\fungus.txt" />
      <None Include="Assets\Fungus\CHANGELOG.txt" />
      <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -287,14 +293,17 @@
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="MoonSharp.Interpreter">
- <HintPath>C:/Users/user/Documents/GitHub/No-Time-To-Wait/Assets/Fungus/Thirdparty/FungusLua/Thirdparty/Moonsharp/MoonSharp.Interpreter.dll</HintPath>
+ <HintPath>C:/Users/user/Desktop/No-Time-To-Wait/Assets/Fungus/Thirdparty/FungusLua/Thirdparty/Moonsharp/MoonSharp.Interpreter.dll</HintPath>
  </Reference>
  <Reference Include="MoonSharp.RemoteDebugger">
- <HintPath>C:/Users/user/Documents/GitHub/No-Time-To-Wait/Assets/Fungus/Thirdparty/FungusLua/Thirdparty/Moonsharp/MoonSharp.RemoteDebugger.dll</HintPath>
+ <HintPath>C:/Users/user/Desktop/No-Time-To-Wait/Assets/Fungus/Thirdparty/FungusLua/Thirdparty/Moonsharp/MoonSharp.RemoteDebugger.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,6 @@ public class SlipBanana : MonoBehaviour
 
     public float floatMovementHeight;   // max distance a power up can move in a single frame
     public int floatCycles;             // higher number = slower floating
-    public PlayerMovement movementScript;
 
     private int currentCycle;
 
@@ -33,12 +32,13 @@ public class SlipBanana : MonoBehaviour
         }
 	}
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.tag == "Body" || collision.gameObject.tag == "Legs") 
-            && movementScript.getStanding())   // if the player touches the power up and is standing
+        Debug.Log("Touching " + collision.gameObject.name);
+        if (collision.gameObject.tag == "Legs"
+            && collision.gameObject.GetComponent<PlayerMovement>().getStanding())   // if the player touches the power up and is standing
         {
-            movementScript.setAngle();
+            collision.gameObject.GetComponent<PlayerMovement>().standing = false;
             Destroy(gameObject); // destroys the game object, making it disappear
         }
     }
